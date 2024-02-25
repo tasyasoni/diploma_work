@@ -9,14 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
     Этот сериализатор используется для преобразования объектов Users в формат JSON и обратно.
     Он определяет, какие поля модели должны быть сериализованы.
 
-    Поля:
-    - email: Email-адрес пользователя.
-
     """
 
     class Meta:
         model = Users
-        fields = ["email"]
+        fields = ["id", "email", 'password', 'seller_status', 'first_name']
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -50,10 +47,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def save(self, *args, **kwargs):
         """
         Создает и сохраняет нового пользователя.
-
         Проверяет, что пароль и подтверждение пароля совпадают, затем создает нового пользователя
         на основе предоставленных данных. Устанавливает пароль пользователя и сохраняет его в базе данных.
-
         Возвращает созданного пользователя.
 
         """
@@ -64,7 +59,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             is_superuser=False,
             is_staff=False,
             is_active=True,
-            is_seller=self.validated_data.get('is_seller', False)  # Используем get для чтения значения is_seller
+            seller_status=self.validated_data.get('seller_status', False)  # Используем get для чтения значения seller_status
         )
 
         password = self.validated_data['password']

@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "diploma-work"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "diploma_work"}]
+
+[tool.poetry.dependencies]
+python = "3.11.4"
+python-dotenv = "1.0.1"
+django = "5.0.1"
+psycopg2-binary = "2.9.9"
+pillow = "10.2.0"
+djangorestframework = "3.14.0"
+django-filter = "23.5"
+djangorestframework-simplejwt = "5.3.1"
+coverage = "7.4.0"
+drf-yasg = "1.21.7"
+django-cors-headers = "^4.3.1"
+flake8 = "^7.0.0"
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

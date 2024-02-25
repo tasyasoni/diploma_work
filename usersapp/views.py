@@ -8,7 +8,8 @@ from rest_framework import status
 
 class IsOwnerOrReadOnly(BasePermission):
     """
-    Сериализатор разрешающая политика для проверки, является ли пользователь владельцем объекта или разрешены только безопасные методы.
+    Сериализатор разрешающая политика для проверки, является ли пользователь
+    владельцем объекта или разрешены только безопасные методы.
     """
 
     def has_object_permission(self, request, view, obj):
@@ -41,7 +42,7 @@ class UsersCreateView(generics.CreateAPIView):
     """
     queryset = Users.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
 
 class UsersUpdateView(generics.UpdateAPIView):
